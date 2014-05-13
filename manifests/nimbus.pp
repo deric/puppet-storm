@@ -8,7 +8,8 @@
 #
 # Requires: storm::install
 #
-# Sample Usage: include storm::nimbus
+# Sample Usage:
+#  class {'storm::nimbus': }
 #
 class storm::nimbus(
   $mem                       = '1024m',

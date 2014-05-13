@@ -9,6 +9,12 @@ describe 'storm::mesos' do
   it { should contain_package('storm') }
   it { should contain_service('storm-mesos') }
 
+
+  it { should contain_service('storm-mesos').with(
+      :enable     => false,
+      :hasstatus  => true,
+  )}
+
   it { should contain_concat__fragment(
     'mesos'
     ).with_content(/mesos.master.url: "zk:\/\/localhost:2181"/)
@@ -26,4 +32,15 @@ describe 'storm::mesos' do
     }
   end
 
+  context 'enable service' do
+    let(:params){{
+      :master_url => 'zk://localhost:2181',
+      :enable     => true,
+    }}
+
+    it { should contain_service('storm-mesos').with(
+      :enable     => true,
+      :hasstatus  => true,
+    )}
+  end
 end

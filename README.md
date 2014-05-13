@@ -56,7 +56,19 @@ class {'storm::drpc': }
 ### Mesos
 
 Mesos integration requires special binary package which provides `storm-mesos` service (framework).
+
 ```puppet
 class {'storm::mesos': }
 ```
 
+## Installation
+
+puppet-librarian:
+
+```ruby
+mod 'deric/storm', :git => 'https://github.com/deric/puppet-storm.git'
+```
+
+dependencies:
+  * `puppetlabs/stdlib`
+  * `puppetlabs/concat`

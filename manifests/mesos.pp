@@ -1,8 +1,8 @@
 # Class: storm::mesos
 #
-# This module manages storm uiation
+# By default service is disabled - service should provide framework
+# which needs to run on one node, though executors we need on each node.
 #
-# Parameters: None
 #
 # Actions: None
 #
@@ -19,7 +19,7 @@ class storm::mesos(
   $executor_uri         = undef,
   $framework_role       = '*',
   $framework_checkpoint = false,
-  $enable               = true,
+  $enable               = false,
   $jvm                  = [],
 ) inherits storm {
 
@@ -32,12 +32,17 @@ class storm::mesos(
     order    => 6,
   }
 
+  package { 'storm-mesos':
+    ensure  => 'installed',
+  }
+
   # Install ui /etc/default
   storm::service { 'mesos':
     start      => 'yes',
     enable     => $enable,
     jvm_memory => $mem,
     opts       => $jvm,
+    require    => Package['storm-mesos'],
   }
 
 }
