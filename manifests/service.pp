@@ -14,7 +14,12 @@
 #                 opts       => ['-Dlog4j.configuration=file:/etc/storm/storm.log.properties', '-Dlogfile.name=nimbus.log']
 #               }
 #
-define storm::service( $start = 'no', $enable = false, $jvm_memory = '768m', $opts = []) {
+define storm::service(
+  $start = 'no',
+  $enable = false,
+  $jvm_memory = '768m',
+  $opts = []
+  ) {
 
   file { "/etc/default/storm-${name}":
     require => Package['storm'],
@@ -23,7 +28,7 @@ define storm::service( $start = 'no', $enable = false, $jvm_memory = '768m', $op
     group   => 'root',
     mode    => '0644'
   }
-  
+
   if $start == 'yes' {
     service { "storm-${name}":
       ensure    => "running",

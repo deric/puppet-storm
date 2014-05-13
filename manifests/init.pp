@@ -8,7 +8,9 @@
 #
 # Requires: None
 #
-# Sample Usage: include storm
+# Sample Usage:
+#
+#  class {'storm': }
 #
 class storm {
   include storm::install

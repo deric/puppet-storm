@@ -25,8 +25,6 @@ class storm::drpc {
   Class['storm::drpc'] ~>
   Class['storm::service::drpc']
 
-  Class['storm::config'] ~>
-  Class['storm::service::drpc']
 
   # Install drpc /etc/default
   storm::service { 'drpc':
