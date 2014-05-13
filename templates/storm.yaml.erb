@@ -2,8 +2,8 @@
 #_ MANAGED BY PUPPET - DO NOT EDIT _#
 
 #_ CORE _#
-java.library.path: "<%= scope.lookupvar('storm::params::java_library_path').join(':') %>"
-storm.local.dir: "<%= scope.lookupvar('storm::params::storm_local_dir') %>"
+java.library.path: "<%= @java_library_path.join(':') %>"
+storm.local.dir: "<%= @storm_local_dir %>"
 storm.cluster.mode: "<%= scope.lookupvar('storm::params::storm_cluster_mode') %>"
 storm.local.mode.zmq: <%= scope.lookupvar('storm::params::storm_local_mode_zmq') %>
 

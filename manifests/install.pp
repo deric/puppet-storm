@@ -10,10 +10,12 @@
 #
 # Sample Usage: include storm::install
 #
-class storm::install {
+class storm::install(
+ $ensure = 'installed',
+) {
 
   package { ['storm', 'libjzmq', 'libzmq0']:
-    ensure => 'installed'
+    ensure => $ensure,
   }
 
 }

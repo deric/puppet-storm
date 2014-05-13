@@ -12,18 +12,6 @@
 #
 class storm::params {
 
-  #_ STORM DEFAULTS _#
-  $java_library_path = hiera_array('java_library_path', ['/usr/local/lib', '/opt/local/lib', '/usr/lib'])
-  $storm_local_dir   = hiera('storm_local_dir', '/usr/lib/storm/storm-local')
-  $storm_user        = hiera('storm_user', 'root')
-  $storm_home        = hiera('storm_home', '/usr/lib/storm')
-  $storm_version     = hiera('storm_version', '0.8.2')
-  $storm_lib         = hiera('storm_lib', '/usr/lib/storm/lib')
-  $storm_jar         = hiera('storm_jar', '/usr/lib/storm/storm-${STORM_VERSION}.jar')
-  $storm_conf        = hiera('storm_conf', '/etc/storm')
-  $storm_classpath   = hiera('storm_classpath', ['$STORM_LIB/*.jar', '$STORM_JAR', '$STORM_CONF'])
-  $storm_options     = hiera_array('storm_options', [''])
-
   #_ ZOOKEEPER _#
   $storm_zookeeper_servers            = hiera_array('storm_zookeeper_servers', ['localhost'])
   $storm_zookeeper_port               = hiera('storm_zookeeper_port', '2181')
