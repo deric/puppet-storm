@@ -1,20 +1,4 @@
 
-#_ UI _#
-ui.port: <%= scope.lookupvar('storm::params::ui_port') %>
-ui.childopts: "<%= scope.lookupvar('storm::params::ui_childopts') %>"
-
-#_ DRPC _#
-drpc.port: <%= scope.lookupvar('storm::params::drpc_port') %>
-drpc.invocations.port: <%= scope.lookupvar('storm::params::drpc_invocations_port') %>
-drpc.request.timeout.secs: <%= scope.lookupvar('storm::params::drpc_request_timeout_secs') %>
-drpc.servers:
-<% scope.lookupvar('storm::params::drpc_servers').each do |drpc| -%>
-    - "<%= drpc %>"
-<% end-%>
-
-transactional.zookeeper.root: "<%= scope.lookupvar('storm::params::transactional_zookeeper_root') %>"
-transactional.zookeeper.servers: <%= scope.lookupvar('storm::params::transactional_zookeeper_servers') %>
-transactional.zookeeper.port: <%= scope.lookupvar('storm::params::transactional_zookeeper_port') %>
 
 #_ SUPERVISOR _#
 supervisor.slots.ports: <% for i in (scope.lookupvar('storm::params::supervisor_start_port').to_i ... (scope.lookupvar('storm::params::supervisor_start_port').to_i + scope.lookupvar('storm::params::supervisor_workers').to_i)) %>

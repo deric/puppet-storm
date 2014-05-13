@@ -1,0 +1,12 @@
+#_ DRPC _#
+drpc.port: <%= @port %>
+drpc.invocations.port: <%= @invocations_port %>
+drpc.request.timeout.secs: <%= @request_timeout_secs %>
+drpc.servers:
+<% @servers.each do |drpc| -%>
+    - "<%= drpc %>"
+<% end-%>
+
+transactional.zookeeper.root: "<%= @transactional_zookeeper_root %>"
+transactional.zookeeper.servers: <%= @transactional_zookeeper_servers %>
+transactional.zookeeper.port: <%= @transactional_zookeeper_port %>

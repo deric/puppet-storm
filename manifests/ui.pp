@@ -8,22 +8,34 @@
 #
 # Requires: storm::install
 #
-# Sample Usage: include storm::ui
+# Sample Usage:
 #
-class storm::ui {
-  require storm::install
-  include storm::config
-  include storm::params
+#  class {'storm::ui': }
+#
+class storm::ui(
+  $mem       = '1024m',
+  $port      = '8080',
+  $childopts = '-Xmx768m',
+  $enable    = true,
+  $jvm       = [
+    '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
+    '-Dlogfile.name=ui.log'
+  ]
+  ) inherits storm {
 
-  Class['storm::config'] ~>
-  Class['storm::service::nimbus']
+  concat::fragment { 'ui':
+    ensure   => present,
+    target   => $config_file,
+    content  => template("${module_name}/storm_ui.erb"),
+    order    => 3,
+  }
 
   # Install ui /etc/default
   storm::service { 'ui':
     start      => 'yes',
-    enable     => true,
-    jvm_memory => $storm::params::ui_mem,
-    opts       => $storm::params::ui_jvm,
+    enable     => $enable,
+    jvm_memory => $mem,
+    opts       => $jvm,
   }
 
 }

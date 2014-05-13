@@ -13,23 +13,6 @@
 class storm::params {
 
 
-  #_ STORM UI _#
-  $ui_mem       = hiera('storm_ui_mem', '1024m')
-  $ui_port      = hiera('storm_ui_port', '8080')
-  $ui_childopts = hiera('storm_ui_childopts', '-Xmx768m')
-  $ui_jvm       = hiera('storm_ui_jvm', ['-Dlog4j.configuration=file:/etc/storm/storm.log.properties', '-Dlogfile.name=ui.log'])
-
-  #_ DISTRIBUTED RPC _#
-  $drpc_mem                        = hiera('drpc_mem', '1024m')
-  $drpc_jvm                        = hiera('drpc_jvm', ['-Dlog4j.configuration=file:/etc/storm/storm.log.properties', '-Dlogfile.name=drpc.log'])
-  $drpc_port                       = hiera('drpc_port', '3772')
-  $drpc_servers                    = hiera_array('drpc_servers', [''])
-  $drpc_invocations_port           = hiera('drpc_invocations_port', '3773')
-  $drpc_request_timeout_secs       = hiera('drpc_request_timeout_secs', '600')
-  $transactional_zookeeper_root    = hiera('transactional_zookeeper_root', '/transactional')
-  $transactional_zookeeper_servers = hiera('transactional_zookeeper_servers', 'null')
-  $transactional_zookeeper_port    = hiera('transactional_zookeeper_port', 'null')
-
   #_ SUPERVISOR _#
   $supervisor_mem                       = hiera('supervisor_mem', '1024m')
   $supervisor_start_port                = hiera('supervisor_slots_start_port', '6700')
