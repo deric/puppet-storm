@@ -10,7 +10,9 @@
 #
 # Sample Usage:
 #
-#  class {'storm::mesos': }
+#  class {'storm::mesos':
+#     master_url => 'zk://localhost:2181/mesos'
+#  }
 #
 class storm::mesos(
   $master_url,
