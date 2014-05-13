@@ -1,0 +1,7 @@
+#_ Mesos _#
+mesos.master.url: "<%= @master_url %>"
+<% if @executor_uri != nil && !@executor_uri.empty? -%>
+mesos.executor.uri: "<%= @executor_uri %>"
+<% end -%>
+mesos.framework.role: "<%= @framework_role %>"
+mesos.framework.checkpoint: <%= @framework_checkpoint %>
