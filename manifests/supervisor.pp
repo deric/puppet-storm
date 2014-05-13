@@ -5,34 +5,44 @@
 # Parameters: None
 #
 # Actions: None
+##
+# Sample Usage:
 #
-# Requires: storm::install
+# class{'storm::supervisor': }
 #
-# Sample Usage: include storm::supervisor
-#
-class storm::supervisor {
-  require storm::install
-  include storm::config
-  include storm::params
+class storm::supervisor(
+  $enable                    = true,
+  $mem                       = '1024m',
+  $start_port                = 6700,
+  $workers                   = 4,
+  $childopts                 = '-Xmx1024m',
+  $worker_start_timeout_secs = 120,
+  $worker_timeout_secs       = 30,
+  $monitor_frequency_secs    = 3,
+  $heartbeat_frequency_secs  = 5,
+  $enable                    = true,
+  $jvm                       = [
+    '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
+    '-Dlogfile.name=supervisor.log'
+  ]
+) inherits storm {
 
-  $storm_supervisor = $::storm::storm_supervisor
-  $storm_supervisor_jvm_memory = $::storm::storm_supervisor_jvm_memory
+  validate_bool($enable)
+  validate_array($jvm)
 
-  # Ordering
-  Class['storm::install'] ->
-  Class['storm::config'] ->
-  Class['storm::supervisor'] ~>
-  Class['storm::service::supervisor']
-
-  Class['storm::config'] ~>
-  Class['storm::service::drpc']
+  concat::fragment { 'supervisor':
+    ensure   => present,
+    target   => $config_file,
+    content  => template("${module_name}/storm_supervisor.erb"),
+    order    => 5,
+  }
 
   # Install supervisor /etc/default
   storm::service { 'supervisor':
     start      => 'yes',
-    enable     => true,
-    jvm_memory => $storm::params::supervisor_mem,
-    opts       => $storm::params::supervisor_jvm,
+    enable     => $enable,
+    jvm_memory => $mem,
+    opts       => $jvm,
   }
 
 }

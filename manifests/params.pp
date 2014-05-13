@@ -12,19 +12,6 @@
 #
 class storm::params {
 
-
-  #_ SUPERVISOR _#
-  $supervisor_mem                       = hiera('supervisor_mem', '1024m')
-  $supervisor_start_port                = hiera('supervisor_slots_start_port', '6700')
-  $supervisor_workers                   = hiera('supervisor_workers', '4')
-  $supervisor_childopts                 = hiera('supervisor_childopts', '-Xmx1024m')
-  $supervisor_worker_start_timeout_secs = hiera('supervisor_worker_start_timeout_secs', '120')
-  $supervisor_worker_timeout_secs       = hiera('supervisor_worker_timeout_secs', '30')
-  $supervisor_monitor_frequency_secs    = hiera('supervisor_monitor_frequency_secs', '3')
-  $supervisor_heartbeat_frequency_secs  = hiera('supervisor_heartbeat_frequency_secs', '5')
-  $supervisor_enable                    = hiera('supervisor_enable', 'true')
-  $supervisor_jvm                       = hiera('supervisor_jvm', ['-Dlog4j.configuration=file:/etc/storm/storm.log.properties', '-Dlogfile.name=supervisor.log'])
-
   #_ WORKERS _#
   $worker_childopts                = hiera('worker_childopts', '-Xmx768m')
   $worker_heartbeat_frequency_secs = hiera('worker_heartbeat_frequency_secs', '1')

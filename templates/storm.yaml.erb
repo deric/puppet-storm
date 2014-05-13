@@ -1,15 +1,4 @@
 
-
-#_ SUPERVISOR _#
-supervisor.slots.ports: <% for i in (scope.lookupvar('storm::params::supervisor_start_port').to_i ... (scope.lookupvar('storm::params::supervisor_start_port').to_i + scope.lookupvar('storm::params::supervisor_workers').to_i)) %>
-    - <%= i %><% end %>
-supervisor.childopts: "<%= scope.lookupvar('storm::params::supervisor_childopts') %>"
-supervisor.worker.start.timeout.secs: <%= scope.lookupvar('storm::params::supervisor_worker_start_timeout_secs') %>
-supervisor.worker.timeout.secs: <%= scope.lookupvar('storm::params::supervisor_worker_timeout_secs') %>
-supervisor.monitor.frequency.secs: <%= scope.lookupvar('storm::params::supervisor_monitor_frequency_secs') %>
-supervisor.heartbeat.frequency.secs: <%= scope.lookupvar('storm::params::supervisor_heartbeat_frequency_secs') %>
-supervisor.enable: <%= scope.lookupvar('storm::params::supervisor_enable') %>
-
 #_ WORKER _#
 worker.childopts: "<%= scope.lookupvar('storm::params::worker_childopts') %>"
 worker.heartbeat.frequency.secs: <%= scope.lookupvar('storm::params::worker_heartbeat_frequency_secs') %>

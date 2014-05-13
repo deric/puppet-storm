@@ -1,0 +1,9 @@
+#_ SUPERVISOR _#
+supervisor.slots.ports: <% for i in (@start_port.to_i ... (@start_port.to_i + @workers.to_i)) %>
+    - <%= i %><% end %>
+supervisor.childopts: "<%= @childopts %>"
+supervisor.worker.start.timeout.secs: <%= @worker_start_timeout_secs %>
+supervisor.worker.timeout.secs: <%= @worker_timeout_secs %>
+supervisor.monitor.frequency.secs: <%= @monitor_frequency_secs %>
+supervisor.heartbeat.frequency.secs: <%= @heartbeat_frequency_secs %>
+supervisor.enable: <%= @enable %>
