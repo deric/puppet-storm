@@ -10,10 +10,10 @@ describe 'storm::mesos' do
   it { should contain_service('storm-mesos') }
 
 
-  it { should contain_service('storm-mesos').with(
+  it { should contain_service('storm-mesos').with({
       :enable     => false,
       :hasstatus  => true,
-  )}
+  })}
 
   it { should contain_concat__fragment(
     'mesos'
@@ -38,9 +38,11 @@ describe 'storm::mesos' do
       :enable     => true,
     }}
 
-    it { should contain_service('storm-mesos').with(
+    it { should contain_service(
+      'storm-mesos'
+      ).with({
       :enable     => true,
       :hasstatus  => true,
-    )}
+    })}
   end
 end
