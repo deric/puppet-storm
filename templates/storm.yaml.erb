@@ -1,18 +1,4 @@
 
-
-#_ NIMBUS _#
-nimbus.host: "<%= scope.lookupvar('storm::params::nimbus_host') %>"
-nimbus.thrift.port: <%= scope.lookupvar('storm::params::nimbus_thrift_port') %>
-nimbus.childopts: "<%= scope.lookupvar('storm::params::nimbus_childopts') %>"
-nimbus.task.timeout.secs: <%= scope.lookupvar('storm::params::nimbus_task_timeout_secs') %>
-nimbus.supervisor.timeout.secs: <%= scope.lookupvar('storm::params::nimbus_supervisor_timeout_secs') %>
-nimbus.monitor.freq.secs: <%= scope.lookupvar('storm::params::nimbus_monitor_freq_secs') %>
-nimbus.cleanup.inbox.freq.secs: <%= scope.lookupvar('storm::params::nimbus_cleanup_inbox_freq_secs') %>
-nimbus.inbox.jar.expiration.secs: <%= scope.lookupvar('storm::params::nimbus_inbox_jar_expiration_secs') %>
-nimbus.task.launch.secs: <%= scope.lookupvar('storm::params::nimbus_task_launch_secs') %>
-nimbus.reassign: <%= scope.lookupvar('storm::params::nimbus_reassign') %>
-nimbus.file.copy.expiration.secs: <%= scope.lookupvar('storm::params::nimbus_file_copy_expiration_secs') %>
-
 #_ UI _#
 ui.port: <%= scope.lookupvar('storm::params::ui_port') %>
 ui.childopts: "<%= scope.lookupvar('storm::params::ui_childopts') %>"

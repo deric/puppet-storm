@@ -6,4 +6,9 @@ describe 'storm::nimbus' do
   it { should contain_package('storm') }
   it { should contain_service('storm-nimbus') }
 
+  it { should contain_concat__fragment(
+    'nimbus'
+    ).with_content(/nimbus.host: "localhost"/)
+  }
+
 end

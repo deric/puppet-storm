@@ -55,19 +55,17 @@ class storm(
     require           => Class['storm::install']
   }
 
-
   concat { $config_file:
     owner  => 'root',
     group  => 'root',
     mode   => '0644',
   }
 
-  concat::fragment { "core":
+  concat::fragment { 'core':
     ensure   => present,
     target   => $config_file,
     content  => template("${module_name}/storm_core.erb"),
     order    => 1,
   }
-
 
 }
