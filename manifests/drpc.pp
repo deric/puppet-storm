@@ -25,7 +25,6 @@ class storm::drpc(
   $transactional_zookeeper_root    = '/transactional',
   $transactional_zookeeper_servers = 'null',
   $transactional_zookeeper_port    = 'null',
-
 ) inherits storm {
 
   validate_array($jvm)

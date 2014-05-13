@@ -18,3 +18,28 @@ storm.zookeeper.session.timeout: <%= @zookeeper_session_timeout %>
 storm.zookeeper.retry.times: <%= @zookeeper_retry_times %>
 storm.zookeeper.retry.interval: <%= @zookeeper_retry_interval %>
 dev.zookeeper.path: "<%= @dev_zookeeper_path %>"
+
+#_ WORKER _#
+worker.childopts: "<%= @worker_childopts %>"
+worker.heartbeat.frequency.secs: <%= @worker_heartbeat_frequency_secs %>
+task.heartbeat.frequency.secs: <%= @task_heartbeat_frequency_secs %>
+task.refresh.poll.secs: <%= @task_refresh_poll_secs %>
+
+#_ 0MQ _#
+zmq.threads: <%= @zmq_threads %>
+zmq.linger.millis: <%= @zmq_linger_millis %>
+
+#_ TOPOLOGY _#
+topology.debug: <%= @topology_debug %>
+topology.optimize: <%= @topology_optimize %>
+topology.workers: <%= @topology_workers %>
+topology.ackers: <%= @topology_ackers %>
+topology.message.timeout.secs: <%= @topology_message_timeout_secs %>
+topology.skip.missing.kryo.registrations: <%= @topology_skip_missing_kryo_registrations %>
+topology.max.task.parallelism: <%= @topology_max_task_parallelism %>
+topology.max.spout.pending: <%= @topology_max_spout_pending %>
+topology.state.synchronization.timeout.secs: <%= @topology_state_synchronization_timeout_secs %>
+topology.stats.sample.rate: <%= @topology_stats_sample_rate %>
+topology.fall.back.on.java.serialization: <%= @topology_fall_back_on_java_serialization %>
+topology.worker.childopts: <%= @topology_worker_childopts %>
+

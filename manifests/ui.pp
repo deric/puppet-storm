@@ -23,6 +23,8 @@ class storm::ui(
   ]
   ) inherits storm {
 
+  validate_array($jvm)
+
   concat::fragment { 'ui':
     ensure   => present,
     target   => $config_file,

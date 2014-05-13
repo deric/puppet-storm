@@ -27,7 +27,6 @@ class storm::nimbus(
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=nimbus.log'],
 ) inherits storm {
-  #require storm::install
 
   concat::fragment { 'nimbus':
     ensure   => present,
