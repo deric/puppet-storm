@@ -15,10 +15,10 @@
 #               }
 #
 define storm::service(
-  $start = 'no',
-  $enable = false,
+  $start      = 'no',
+  $enable     = false,
   $jvm_memory = '768m',
-  $opts = []
+  $opts       = []
   ) {
 
   file { "/etc/default/storm-${name}":
@@ -31,12 +31,13 @@ define storm::service(
 
   if $start == 'yes' {
     service { "storm-${name}":
-      ensure    => "running",
+      ensure    => 'running',
       hasstatus => true,
       enable    => $enable,
-      subscribe => [File["/etc/storm/storm.yaml"], File["/etc/default/storm"], File["/etc/default/storm-${name}"]],
+      subscribe => [ File["/etc/storm/storm.yaml"],
+                     File["/etc/default/storm"],
+                     File["/etc/default/storm-${name}"]
+      ],
     }
   }
-
-
 }

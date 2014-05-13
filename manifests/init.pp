@@ -23,17 +23,29 @@ class storm(
   $conf              = '/etc/storm',
   $classpath         = ['$STORM_LIB/*.jar', '$STORM_JAR', '$STORM_CONF'],
   $options           = [''],
+  $cluster_mode      = 'distributed',
+  $local_mode_zmq    = 'false',
+  $zookeeper_servers            = ['localhost'],
+  $zookeeper_port               = '2181',
+  $zookeeper_root               = '/storm',
+  $zookeeper_session_timeout    = '20000',
+  $zookeeper_retry_times        = '5',
+  $zookeeper_retry_interval     = '1000',
+  $config_file                  = '/etc/storm/storm.yaml',
+  $dev_zookeeper_path           = '/tmp/dev-storm-zookeeper',
 ) {
 
-  class {'storm::install':
+  validate_array($java_library_path)
+  validate_array($classpath)
+  validate_array($options)
+  validate_array($zookeeper_servers)
 
-  }
+  class {'storm::install': }
 
   class {'storm::config':
     java_library_path => $java_library_path,
     user              => $user,
     home              => $home,
-    user              => $user,
     version           => $version,
     lib               => $lib,
     jar               => $jar,
@@ -42,5 +54,20 @@ class storm(
     options           => $options,
     require           => Class['storm::install']
   }
+
+
+  concat { $config_file:
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+  }
+
+  concat::fragment { "core":
+    ensure   => present,
+    target   => $config_file,
+    content  => template("${module_name}/storm_core.erb"),
+    order    => 1,
+  }
+
 
 }

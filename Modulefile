@@ -10,3 +10,4 @@ project_page 'https://github.com/deric/puppet-storm'
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
 dependency 'puppetlabs/stdlib', '>= 0.1.7'
+dependency 'puppetlabs/concat', '>= 1.0.0'

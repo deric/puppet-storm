@@ -12,31 +12,6 @@
 #
 class storm::params {
 
-  #_ ZOOKEEPER _#
-  $storm_zookeeper_servers            = hiera_array('storm_zookeeper_servers', ['localhost'])
-  $storm_zookeeper_port               = hiera('storm_zookeeper_port', '2181')
-  $storm_zookeeper_root               = hiera('storm_zookeeper_root', '/storm')
-  $storm_zookeeper_session_timeout    = hiera('storm_zookeeper_session_timeout', '20000')
-  $storm_zookeeper_retry_times        = hiera('storm_zookeeper_retry_times', '5')
-  $storm_zookeeper_retry_interval     = hiera('storm_zookeeper_retry_interval', '1000')
-  $storm_cluster_mode                 = hiera('storm_cluster_mode', 'distributed')
-  $storm_local_mode_zmq               = hiera('storm_local_mode_zmq', 'false')
-  $dev_zookeeper_path                 = hiera('dev_zookeeper_path', '/tmp/dev-storm-zookeeper')
-
-  #_ NIMBUS _#
-  $nimbus_mem                       = hiera('nimbus_mem', '1024m')
-  $nimbus_host                      = hiera('nimbus_host', 'localhost')
-  $nimbus_thrift_port               = hiera('nimbus_thrift_port', '6627')
-  $nimbus_childopts                 = hiera('nimbus_childopts', '-Xmx1024m')
-  $nimbus_task_timeout_secs         = hiera('nimbus_task_timeout_secs', '30')
-  $nimbus_supervisor_timeout_secs   = hiera('nimbus_supervisor_timeout_secs', '60')
-  $nimbus_monitor_freq_secs         = hiera('nimbus_monitor_freq_secs', '10')
-  $nimbus_cleanup_inbox_freq_secs   = hiera('nimbus_cleanup_inbox_freq_secs', '600')
-  $nimbus_inbox_jar_expiration_secs = hiera('nimbus_inbox_jar_expiration_secs', '3600')
-  $nimbus_task_launch_secs          = hiera('nimbus_task_launch_secs', '120')
-  $nimbus_reassign                  = hiera('nimbus_reassign', 'true')
-  $nimbus_file_copy_expiration_secs = hiera('nimbus_file_copy_expiration_secs', '600')
-  $nimbus_jvm                       = hiera('nimbus_jvm', ['-Dlog4j.configuration=file:/etc/storm/storm.log.properties', '-Dlogfile.name=nimbus.log'])
 
   #_ STORM UI _#
   $ui_mem       = hiera('storm_ui_mem', '1024m')

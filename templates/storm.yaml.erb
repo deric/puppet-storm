@@ -1,23 +1,4 @@
-#_ STORM CONFIGURATION _#
-#_ MANAGED BY PUPPET - DO NOT EDIT _#
 
-#_ CORE _#
-java.library.path: "<%= @java_library_path.join(':') %>"
-storm.local.dir: "<%= @storm_local_dir %>"
-storm.cluster.mode: "<%= scope.lookupvar('storm::params::storm_cluster_mode') %>"
-storm.local.mode.zmq: <%= scope.lookupvar('storm::params::storm_local_mode_zmq') %>
-
-#_ ZOOKEEPER _#
-storm.zookeeper.servers:
-<% scope.lookupvar('storm::params::storm_zookeeper_servers').each do |z| -%>
-    - "<%= z %>"
-<% end-%>
-storm.zookeeper.port: <%= scope.lookupvar('storm::params::storm_zookeeper_port') %>
-storm.zookeeper.root: "<%= scope.lookupvar('storm::params::storm_zookeeper_root') %>"
-storm.zookeeper.session.timeout: <%= scope.lookupvar('storm::params::storm_zookeeper_session_timeout') %>
-storm.zookeeper.retry.times: <%= scope.lookupvar('storm::params::storm_zookeeper_retry_times') %>
-storm.zookeeper.retry.interval: <%= scope.lookupvar('storm::params::storm_zookeeper_retry_interval') %>
-dev.zookeeper.path: "<%= scope.lookupvar('storm::params::dev_zookeeper_path') %>"
 
 #_ NIMBUS _#
 nimbus.host: "<%= scope.lookupvar('storm::params::nimbus_host') %>"

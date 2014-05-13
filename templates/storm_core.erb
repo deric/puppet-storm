@@ -1,0 +1,20 @@
+#_ STORM CONFIGURATION _#
+#_ MANAGED BY PUPPET - DO NOT EDIT _#
+
+#_ CORE _#
+java.library.path: "<%= @java_library_path.join(':') %>"
+storm.local.dir: "<%= @storm_local_dir %>"
+storm.cluster.mode: "<%= @cluster_mode %>"
+storm.local.mode.zmq: <%= @local_mode_zmq %>
+
+#_ ZOOKEEPER _#
+storm.zookeeper.servers:
+<% @zookeeper_servers.each do |z| -%>
+    - "<%= z %>"
+<% end-%>
+storm.zookeeper.port: <%= @zookeeper_port %>
+storm.zookeeper.root: "<%= @zookeeper_root %>"
+storm.zookeeper.session.timeout: <%= @zookeeper_session_timeout %>
+storm.zookeeper.retry.times: <%= @zookeeper_retry_times %>
+storm.zookeeper.retry.interval: <%= @zookeeper_retry_interval %>
+dev.zookeeper.path: "<%= @dev_zookeeper_path %>"

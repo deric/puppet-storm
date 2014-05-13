@@ -23,13 +23,13 @@ class storm::config(
   $options           = [''],
 ) {
 
-  file { '/etc/storm/storm.yaml':
-    content => template('storm/storm.yaml.erb'),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require => Package['storm'],
-  }
+ # file { '/etc/storm/storm.yaml':
+ #   content => template('storm/storm.yaml.erb'),
+ #   owner   => 'root',
+ #   group   => 'root',
+ #   mode    => '0644',
+ #   require => Package['storm'],
+ # }
 
   file { '/etc/default/storm':
     content => template('storm/default.erb'),

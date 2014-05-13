@@ -9,4 +9,4 @@ STORM_JAR="<%= @jar %>"
 STORM_CONF="<%= @conf %>"
 STORM_CLASSPATH="<% @classpath.each do |p| -%>$(echo <%= p %> | tr ' ' ':'):<% end -%>"
 
-STORM_OPTIONS="<%= options %>"
+STORM_OPTIONS="<%= @options %>"
