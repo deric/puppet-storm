@@ -25,4 +25,9 @@ describe 'storm' do
     ).with_content(/storm.zookeeper.port: 2181/)
   }
 
+  it { should contain_concat__fragment(
+    'core'
+    ).with_content(/storm.local.dir: "\/usr\/lib\/storm\/storm-local"/)
+  }
+
 end

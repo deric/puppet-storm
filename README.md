@@ -44,6 +44,8 @@ class {'storm::ui': }
 
 ### Supervisor
 
+Each computing node should include supervisor which watches Storm's bolts and spouts.
+
 ```puppet
 class {'storm::supervisor': }
 ```
@@ -59,6 +61,12 @@ Mesos integration requires special binary package which provides `storm-mesos` s
 
 ```puppet
 class {'storm::mesos': }
+```
+
+In Hiera you could define something like this:
+
+```yaml
+storm::mesos::master_url: "%{mesos::zookeeper}"
 ```
 
 ## Installation
