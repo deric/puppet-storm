@@ -3,7 +3,10 @@ require 'spec_helper'
 describe 'storm' do
 
   it { should compile.with_all_deps }
-  it { should contain_package('storm') }
+  it { should contain_package('storm').with({
+      'ensure' => 'present'
+      })
+  }
 
   it { should contain_file(
     '/etc/default/storm'
@@ -30,4 +33,11 @@ describe 'storm' do
     ).with_content(/storm.local.dir: "\/usr\/lib\/storm\/storm-local"/)
   }
 
+  context 'install latest versuin' do
+    let(:params) {{:packages_ensure => 'latest'}}
+
+    it { should contain_package('storm').with({
+      'ensure' => 'latest'
+      }) }
+  end
 end

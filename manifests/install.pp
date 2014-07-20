@@ -6,16 +6,16 @@
 #
 # Actions: None
 #
-# Requires:
 #
-# Sample Usage: include storm::install
+# Normally we need just 'storm' package, however you might want to pass
+# other dependencies, like 'libjzmq' etc.
+#
 #
 class storm::install(
- $ensure = 'installed',
+  $packages = ['storm'],
+  $ensure   = 'installed',
 ) {
 
-  package { ['storm', 'libjzmq', 'libzmq0']:
-    ensure => $ensure,
-  }
+  ensure_resource('package', $packages, {'ensure' => $ensure })
 
 }

@@ -57,6 +57,10 @@ class storm(
   $topology_stats_sample_rate                  = '0.05',
   $topology_fall_back_on_java_serialization    = true,
   $topology_worker_childopts                   = 'null',
+
+
+  $packages        = ['storm'],
+  $packages_ensure = 'present',
 ) {
 
   validate_array($java_library_path)
@@ -65,7 +69,10 @@ class storm(
   validate_array($zookeeper_servers)
   validate_array($topology_kryo_register)
 
-  class {'storm::install': }
+  class {'storm::install':
+    packages => $packages,
+    ensure   => $packages_ensure,
+  }
 
   class {'storm::config':
     java_library_path => $java_library_path,
