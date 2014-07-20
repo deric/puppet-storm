@@ -28,7 +28,6 @@ class storm::config(
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    require => Package['storm'],
   }
 
 }
