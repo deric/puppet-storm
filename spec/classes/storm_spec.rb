@@ -33,11 +33,25 @@ describe 'storm' do
     ).with_content(/storm.local.dir: "\/usr\/lib\/storm\/storm-local"/)
   }
 
-  context 'install latest versuin' do
+  context 'install latest version' do
     let(:params) {{:packages_ensure => 'latest'}}
 
     it { should contain_package('storm').with({
       'ensure' => 'latest'
       }) }
+  end
+
+  context 'allow installing alternative storm distribution' do
+    let(:params) {{:packages => ['storm-mesos']}}
+
+    it { should contain_package('storm-mesos').with({
+      'ensure' => 'present'
+      })
+    }
+
+    it { should_not contain_package('storm').with({
+      'ensure' => 'present'
+      })
+    }
   end
 end
