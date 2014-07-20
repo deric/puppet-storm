@@ -32,9 +32,7 @@ class storm::mesos(
     order    => 6,
   }
 
-  package { 'storm-mesos':
-    ensure  => 'installed',
-  }
+  ensure_packages(['storm-mesos'])
 
   # Install ui /etc/default
   storm::service { 'mesos':

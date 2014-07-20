@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe 'storm::mesos' do
 
-  let(:params) {{:master_url => 'zk://localhost:2181'}}
+  let(:params) {{
+    :master_url => 'zk://localhost:2181',
+  }}
 
   it { should compile.with_all_deps }
   it { should contain_class('storm::mesos') }
-  it { should contain_package('storm') }
   it { should contain_service('storm-mesos') }
 
 
