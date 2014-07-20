@@ -69,6 +69,15 @@ In Hiera you could define something like this:
 storm::mesos::master_url: "%{mesos::zookeeper}"
 ```
 
+### Packages
+
+Some configuration is shared between components, e.g. packages that are installed:
+
+```yaml
+storm::packages: ['storm', 'libjzmq']
+```
+by default just `storm` package is installed.
+
 ## Installation
 
 puppet-librarian:
