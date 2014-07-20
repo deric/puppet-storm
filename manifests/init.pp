@@ -17,7 +17,7 @@ class storm(
   $local_dir                 = '/usr/lib/storm/storm-local',
   $user                      = 'root',
   $home                      = '/usr/lib/storm',
-  $version                   = '0.9.1',
+  $version                   = '0.9.2',
   $lib                       = '/usr/lib/storm/lib',
   $jar                       = '/usr/lib/storm/storm-${STORM_VERSION}.jar',
   $conf                      = '/etc/storm',
