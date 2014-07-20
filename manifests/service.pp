@@ -22,11 +22,11 @@ define storm::service(
   ) {
 
   file { "/etc/default/storm-${name}":
-    require => Package['storm'],
     content => template('storm/default-service.erb'),
     owner   => 'root',
     group   => 'root',
-    mode    => '0644'
+    mode    => '0644',
+    require => Class['storm::install'],
   }
 
   if $start == 'yes' {
