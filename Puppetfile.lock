@@ -1,5 +1,5 @@
 FORGE
-  remote: http://forge.puppetlabs.com
+  remote: https://forgeapi.puppetlabs.com
   specs:
     puppetlabs/concat (1.1.0-rc1)
       puppetlabs/stdlib (>= 3.0.0)
