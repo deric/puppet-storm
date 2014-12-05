@@ -1,7 +1,6 @@
 require 'puppet'
 require 'rspec'
 require 'puppetlabs_spec_helper/module_spec_helper'
-require 'shared_context'
 require 'rspec-puppet/coverage'
 
 fixture_path = File.expand_path(File.join(__FILE__, '..', 'fixtures'))
@@ -15,6 +14,7 @@ RSpec.configure do |c|
     :kernel          => 'Linux',
     :concat_basedir  => '/var/lib/puppet/concat',
   }
+  c.hiera_config = File.expand_path(File.join(__FILE__, '..','fixtures', 'hiera', 'test.yml'))
 end
 
 Puppet::Util::Log.level = :warning
