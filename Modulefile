@@ -1,5 +1,5 @@
 name    'deric-storm'
-version '0.1.1'
+version '0.2.0'
 source 'https://github.com/deric/puppet-storm.git'
 author 'deric'
 license 'Apache License, Version 2.0'
