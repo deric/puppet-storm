@@ -23,6 +23,7 @@ class storm::nimbus(
   $inbox_jar_expiration_secs = 3600,
   $task_launch_secs          = 120,
   $reassign                  = true,
+  $enable_service            = true,
   $file_copy_expiration_secs = 600,
   $jvm                       = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
@@ -37,12 +38,14 @@ class storm::nimbus(
   }
 
   # Install nimbus /etc/default
-  storm::service { 'nimbus':
-    start      => 'yes',
-    enable     => true,
-    jvm_memory => $mem,
-    opts       => $jvm,
-    require    => Class['storm::config']
+  if $enable_service {
+    storm::service { 'nimbus':
+      start      => 'yes',
+      enable     => true,
+      jvm_memory => $mem,
+      opts       => $jvm,
+      require    => Class['storm::config']
+    }
   }
 
 }
