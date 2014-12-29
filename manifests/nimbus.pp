@@ -40,11 +40,12 @@ class storm::nimbus(
   # Install nimbus /etc/default
   if $enable_service {
     storm::service { 'nimbus':
-      start      => 'yes',
-      enable     => true,
-      jvm_memory => $mem,
-      opts       => $jvm,
-      require    => Class['storm::config']
+      start       => 'yes',
+      config_file => $config_file,
+      enable      => true,
+      jvm_memory  => $mem,
+      opts        => $jvm,
+      require     => Class['storm::config']
     }
   }
 

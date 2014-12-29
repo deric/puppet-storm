@@ -36,11 +36,12 @@ class storm::mesos(
 
   # Install ui /etc/default
   storm::service { 'mesos':
-    start      => 'yes',
-    enable     => $enable,
-    jvm_memory => $mem,
-    opts       => $jvm,
-    require    => Package['storm-mesos'],
+    start       => 'yes',
+    config_file => $config_file,
+    enable      => $enable,
+    jvm_memory  => $mem,
+    opts        => $jvm,
+    require     => Package['storm-mesos'],
   }
 
 }

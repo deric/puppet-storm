@@ -34,10 +34,11 @@ class storm::ui(
 
   # Install ui /etc/default
   storm::service { 'ui':
-    start      => 'yes',
-    enable     => $enable,
-    jvm_memory => $mem,
-    opts       => $jvm,
+    start       => 'yes',
+    config_file => $config_file,
+    enable      => $enable,
+    jvm_memory  => $mem,
+    opts        => $jvm,
   }
 
 }

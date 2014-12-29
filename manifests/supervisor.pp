@@ -39,10 +39,11 @@ class storm::supervisor(
 
   # Install supervisor /etc/default
   storm::service { 'supervisor':
-    start      => 'yes',
-    enable     => $enable,
-    jvm_memory => $mem,
-    opts       => $jvm,
+    start       => 'yes',
+    config_file => $config_file,
+    enable      => $enable,
+    jvm_memory  => $mem,
+    opts        => $jvm,
   }
 
 }
