@@ -13,7 +13,7 @@ class storm(
   $user                                        = 'root',
   $group                                       = 'root',
   $home                                        = '/usr/lib/storm',
-  $version                                     = '0.9.2',
+  $version                                     = '0.9.3',
   $lib                                         = '/usr/lib/storm/lib',
   $jar                                         = "/usr/lib/storm/storm-${version}.jar",
   $conf                                        = '/etc/storm',
