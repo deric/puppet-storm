@@ -16,10 +16,12 @@
 #
 class storm::mesos(
   $master_url,
+  $manage_service       = false,
+  $enable               = true,
+  $force_provider       = undef,
   $executor_uri         = undef,
   $framework_role       = '*',
   $framework_checkpoint = false,
-  $enable               = false,
   $jvm                  = [],
 ) inherits storm {
 
@@ -36,12 +38,13 @@ class storm::mesos(
 
   # Install ui /etc/default
   storm::service { 'mesos':
-    start       => 'yes',
-    config_file => $config_file,
-    enable      => $enable,
-    jvm_memory  => $mem,
-    opts        => $jvm,
-    require     => Package['storm-mesos'],
+    manage_service => $manage_service,
+    force_provider => $force_provider,
+    enable         => $enable,
+    config_file    => $config_file,
+    jvm_memory     => $mem,
+    opts           => $jvm,
+    require        => Package['storm-mesos'],
   }
 
 }

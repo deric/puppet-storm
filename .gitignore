@@ -2,4 +2,6 @@
 .tmp/*
 *.log
 spec/fixtures/modules/*
+spec/fixtures/*
 pkg/*
+

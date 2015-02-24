@@ -8,13 +8,7 @@ describe 'storm::mesos' do
 
   it { should compile.with_all_deps }
   it { should contain_class('storm::mesos') }
-  it { should contain_service('storm-mesos') }
-
-
-  it { should contain_service('storm-mesos').with({
-      :enable     => false,
-      :hasstatus  => true,
-  })}
+  it { should_not contain_service('storm-mesos')}
 
   it { should contain_concat__fragment(
     'mesos'
@@ -37,6 +31,7 @@ describe 'storm::mesos' do
     let(:params){{
       :master_url => 'zk://localhost:2181',
       :enable     => true,
+      :manage_service => true
     }}
 
     it { should contain_service(
@@ -44,6 +39,7 @@ describe 'storm::mesos' do
       ).with({
       :enable     => true,
       :hasstatus  => true,
+      :ensure     => 'running'
     })}
   end
 end

@@ -2,9 +2,6 @@
 #
 # This module manages storm nimbusation
 #
-# Parameters: None
-#
-# Actions: None
 #
 # Requires: storm::install
 #
@@ -12,6 +9,9 @@
 #  class {'storm::nimbus': }
 #
 class storm::nimbus(
+  $manage_service            = false,
+  $enable                    = true,
+  $force_provider            = undef,
   $mem                       = '1024m',
   $host                      = 'localhost',
   $thrift_port               = 6627,
@@ -23,7 +23,6 @@ class storm::nimbus(
   $inbox_jar_expiration_secs = 3600,
   $task_launch_secs          = 120,
   $reassign                  = true,
-  $enable_service            = true,
   $file_copy_expiration_secs = 600,
   $jvm                       = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
@@ -38,15 +37,14 @@ class storm::nimbus(
   }
 
   # Install nimbus /etc/default
-  if $enable_service {
-    storm::service { 'nimbus':
-      start       => 'yes',
-      config_file => $config_file,
-      enable      => true,
-      jvm_memory  => $mem,
-      opts        => $jvm,
-      require     => Class['storm::config']
-    }
-  }
 
+  storm::service { 'nimbus':
+    manage_service => $manage_service,
+    config_file    => $config_file,
+    force_provider => $force_provider,
+    enable         => $enable,
+    jvm_memory     => $mem,
+    opts           => $jvm,
+    require        => Class['storm::config']
+  }
 }

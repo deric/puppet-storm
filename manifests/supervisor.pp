@@ -11,6 +11,8 @@
 # class{'storm::supervisor': }
 #
 class storm::supervisor(
+  $manage_service            = false,
+  $force_provider            = undef,
   $enable                    = true,
   $mem                       = '1024m',
   $start_port                = 6700,
@@ -39,11 +41,12 @@ class storm::supervisor(
 
   # Install supervisor /etc/default
   storm::service { 'supervisor':
-    start       => 'yes',
-    config_file => $config_file,
-    enable      => $enable,
-    jvm_memory  => $mem,
-    opts        => $jvm,
+    manage_service => $manage_service,
+    enable         => $enable,
+    force_provider => $force_provider,
+    config_file    => $config_file,
+    jvm_memory     => $mem,
+    opts           => $jvm,
   }
 
 }

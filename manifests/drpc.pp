@@ -13,7 +13,9 @@
 #  class{'storm::drpc': }
 #
 class storm::drpc(
+  $manage_service                  = false,
   $enable                          = true,
+  $force_provider                  = undef,
   $mem                             = '1024m',
   $jvm                             = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
@@ -39,11 +41,12 @@ class storm::drpc(
 
   # Install drpc /etc/default
   storm::service { 'drpc':
-    start       => 'yes',
-    config_file => $config_file,
-    enable      => $enable,
-    jvm_memory  => $mem,
-    opts        => $jvm,
+    manage_service => $manage_service,
+    force_provider => $force_provider,
+    enable         => $enable,
+    config_file    => $config_file,
+    jvm_memory     => $mem,
+    opts           => $jvm,
   }
 
 }
