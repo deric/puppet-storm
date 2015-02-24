@@ -15,7 +15,8 @@ class storm(
   $home                                        = '/usr/lib/storm',
   $version                                     = '0.9.3',
   $lib                                         = '/usr/lib/storm/lib',
-  $jar                                         = "/usr/lib/storm/storm-${version}.jar",
+  # JAR path will be "$lib/$jar_prefix-$version.jar"
+  $jar_prefix                                  = 'storm',
   $conf                                        = '/etc/storm',
   $classpath                                   = ['$STORM_LIB/*.jar', '$STORM_JAR', '$STORM_CONF'],
   $options                                     = [''],
@@ -74,7 +75,7 @@ class storm(
     home              => $home,
     version           => $version,
     lib               => $lib,
-    jar               => $jar,
+    jar_prefix        => $jar_prefix,
     conf              => $conf,
     classpath         => $classpath,
     options           => $options,

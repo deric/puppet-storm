@@ -5,7 +5,7 @@ STORM_USER="<%= @user %>"
 STORM_HOME="<%= @home %>"
 STORM_VERSION="<%= @version %>"
 STORM_LIB="<%= @lib %>"
-STORM_JAR="<%= @jar %>"
+STORM_JAR="<%= @lib %>/<%= @jar_prefix %>-<%= @version %>.jar"
 STORM_CONF="<%= @conf %>"
 STORM_CLASSPATH="<% @classpath.each do |p| -%>$(echo <%= p %> | tr ' ' ':'):<% end -%>"
 
