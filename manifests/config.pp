@@ -17,7 +17,7 @@ class storm::config(
   $home              = '/usr/lib/storm',
   $version           = '0.9.2',
   $lib               = '/usr/lib/storm/lib',
-  $jar               = '/usr/lib/storm/storm-${STORM_VERSION}.jar',
+  $jar               = "/usr/lib/storm/storm-${version}.jar",
   $conf              = '/etc/storm',
   $classpath         = ['$STORM_LIB/*.jar', '$STORM_JAR', '$STORM_CONF'],
   $options           = [''],

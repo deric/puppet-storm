@@ -31,10 +31,10 @@ class storm::supervisor(
   validate_array($jvm)
 
   concat::fragment { 'supervisor':
-    ensure   => present,
-    target   => $config_file,
-    content  => template("${module_name}/storm_supervisor.erb"),
-    order    => 5,
+    ensure  => present,
+    target  => $config_file,
+    content => template("${module_name}/storm_supervisor.erb"),
+    order   => 5,
   }
 
   # Install supervisor /etc/default

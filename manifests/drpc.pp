@@ -31,10 +31,10 @@ class storm::drpc(
   validate_array($servers)
 
   concat::fragment { 'drpc':
-    ensure   => present,
-    target   => $config_file,
-    content  => template("${module_name}/storm_drpc.erb"),
-    order    => 4,
+    ensure  => present,
+    target  => $config_file,
+    content => template("${module_name}/storm_drpc.erb"),
+    order   => 4,
   }
 
   # Install drpc /etc/default

@@ -36,8 +36,8 @@ define storm::service(
       hasstatus => true,
       enable    => $enable,
       subscribe => [ File[$config_file],
-                     File["/etc/default/storm"],
-                     File["/etc/default/storm-${name}"]
+        File['/etc/default/storm'],
+        File["/etc/default/storm-${name}"]
       ],
     }
   }
