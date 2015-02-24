@@ -1,0 +1,15 @@
+{
+  "name": "deric-storm",
+  "version": "0.2.0",
+  "author": "deric",
+  "summary": "Module for managing Storm installation",
+  "license": "Apache-2.0",
+  "source": "https://github.com/deric/puppet-storm.git",
+  "project_page": "https://github.com/deric/puppet-storm",
+  "issues_url": "https://github.com/deric/puppet-storm/issues",
+  "description": "Storm is a framework for distributed real-time data stream processing.",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 0.1.7"},
+    {"name":"puppetlabs/concat","version_requirement":">= 1.0.0"}
+  ]
+}
