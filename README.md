@@ -17,11 +17,35 @@ Features:
 
 ## Usage
 
-Main storm class includes default configuration, each component is afterwards configured individually.
+The binary package, which is by default called `storm` will be installed on all machines. You can provide a set of packages:
+
+```puppet
+class {'storm':
+  packages => ['storm', 'storm-mesos', 'libjzmq']
+}
+```
+
+Main Storm class includes default configuration, each component is afterwards configured individually.
 
 On master node include Nimbus:
 ```puppet
 class {'storm::nimbus': }
+```
+By default service management is disabled, to enable starting service with OS default init system (init.d/upstart/systemd/...) use parameter `manage_service`:
+
+```puppet
+class {'storm::nimbus':
+  manage_service => true
+}
+```
+
+In order to change default service mechanism (determined by Puppet) use parameter `force_provider`:
+
+```puppet
+class {'storm::nimbus':
+  manage_service => true,
+  force_provider => 'runit'
+}
 ```
 
 You can adjust all the parameters directly:

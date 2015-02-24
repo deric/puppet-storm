@@ -2,11 +2,6 @@
 #
 # This module install Storm binary package (does not manage repositories yet)
 #
-# Parameters: None
-#
-# Actions: None
-#
-# Requires: None
 #
 # Sample Usage:
 #
@@ -16,6 +11,7 @@ class storm(
   $java_library_path                           = ['/usr/local/lib', '/opt/local/lib', '/usr/lib'],
   $local_dir                                   = '/usr/lib/storm/storm-local',
   $user                                        = 'root',
+  $group                                       = 'root',
   $home                                        = '/usr/lib/storm',
   $version                                     = '0.9.2',
   $lib                                         = '/usr/lib/storm/lib',
@@ -86,8 +82,8 @@ class storm(
   }
 
   concat { $config_file:
-    owner => 'root',
-    group => 'root',
+    owner => $user,
+    group => $group,
     mode  => '0644',
   }
 

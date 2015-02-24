@@ -2,39 +2,48 @@
 #
 # This module manages storm serviceation
 #
-# Parameters: None
+# Parameters:
+#  [*manage_service*] - whether service should be manged by system default
+#                       init system
+#  [*enable*]         - automatic sevice start (`manage_service` must be `true`)
+#  [*jvm_memory*]     - maximum memory for JVM
+#  [*opts*]           - Java options which will be passed to service
 #
-# Actions: None
 #
 # Requires: storm::install
 #
 # Sample Usage: storm::service { 'nimbus':
-#                 start      => 'yes',
-#                 jvm_memory => '1024m',
-#                 opts       => ['-Dlog4j.configuration=file:/etc/storm/storm.log.properties', '-Dlogfile.name=nimbus.log']
+#                 manage_service => true,
+#                 jvm_memory     => '1024m',
+#                 opts           => ['-Dlog4j.configuration=file:/etc/storm/storm.log.properties', '-Dlogfile.name=nimbus.log']
 #               }
 #
 define storm::service(
-  $start       = 'no',
-  $config_file = '/etc/storm/storm.yaml',
-  $enable      = false,
-  $jvm_memory  = '768m',
-  $opts        = []
+  $manage_service = false,
+  $force_provider = undef,
+  $config_file    = '/etc/storm/storm.yaml',
+  $enable         = true,
+  $jvm_memory     = '768m',
+  $opts           = [],
+  $user           = 'root',
+  $owner          = 'root'
   ) {
 
   file { "/etc/default/storm-${name}":
     content => template('storm/default-service.erb'),
-    owner   => 'root',
-    group   => 'root',
+    owner   => $owner,
+    group   => $user,
     mode    => '0644',
     require => Class['storm::install'],
   }
 
-  if $start == 'yes' {
+  if $manage_service {
     service { "storm-${name}":
       ensure    => 'running',
       hasstatus => true,
       enable    => $enable,
+      provider  => $force_provider,
+      require   => File["/etc/default/storm-${name}"],
       subscribe => [ File[$config_file],
         File['/etc/default/storm'],
         File["/etc/default/storm-${name}"]
