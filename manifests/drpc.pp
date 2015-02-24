@@ -39,10 +39,11 @@ class storm::drpc(
 
   # Install drpc /etc/default
   storm::service { 'drpc':
-    start      => 'yes',
-    enable     => $enable,
-    jvm_memory => $mem,
-    opts       => $jvm,
+    start       => 'yes',
+    config_file => $config_file,
+    enable      => $enable,
+    jvm_memory  => $mem,
+    opts        => $jvm,
   }
 
 }
