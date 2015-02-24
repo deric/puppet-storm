@@ -61,11 +61,42 @@ or via Hiera:
 storm::nimbus::host: '192.168.1.1'
 ```
 
+Parameters:
+
+  * `manage_service` by default `false` (service not managed by OS)
+  * `enable` whether service should be enable (default: `true`, note `manage_service` must be also `true`)
+  * `force_provider` default: `undef`
+  * `host` address to bind, default: `localhost`
+  * `thrift_port` default: `6627`
+  * `childopts` default `-Xmx1024m`
+  * `task_timeout_secs` default `30`
+  * `supervisor_timeout_secs` default `60`
+  * `monitor_freq_secs` default `10`
+  * `cleanup_inbox_freq_secs` default `600`
+  * `inbox_jar_expiration_secs` default `3600`
+  * `task_launch_secs` default `120`
+  * `reassign` default `true`
+  * `file_copy_expiration_secs` default `600`
+  `jvm` array, default:
+
+```
+['-Dlog4j.configuration=file:/etc/storm/storm.log.properties','-Dlogfile.name=nimbus.log']
+```
+
 ### UI
 
 ```puppet
 class {'storm::ui': }
 ```
+
+Parameters:
+
+  * `manage_service` by default `false` (service not managed by OS)
+  * `enable` whether service should be enable (default: `true`, note `manage_service` must be also `true`)
+  * `force_provider` default: `undef`
+  * `mem` JVM memory default `1024m`
+  * `port` default: `8080`
+  * `childopts` default  `-Xmx768m`
 
 ### Supervisor
 

@@ -19,7 +19,6 @@ class storm::ui(
   $mem            = '1024m',
   $port           = '8080',
   $childopts      = '-Xmx768m',
-  $enable         = true,
   $jvm            = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=ui.log'
