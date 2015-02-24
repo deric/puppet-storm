@@ -27,6 +27,7 @@ describe 'storm::drpc' do
       :manage_service => true
     }}
 
+    it { should contain_storm__service('drpc') }
     it { should contain_service('storm-drpc').with({
       :enable     => true,
       :hasstatus  => true,

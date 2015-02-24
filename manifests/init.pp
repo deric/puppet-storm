@@ -20,7 +20,7 @@ class storm(
   $classpath                                   = ['$STORM_LIB/*.jar', '$STORM_JAR', '$STORM_CONF'],
   $options                                     = [''],
   $cluster_mode                                = 'distributed',
-  $local_mode_zmq                              = 'false',
+  $local_mode_zmq                              = false,
   $zookeeper_servers                           = ['localhost'],
   $zookeeper_port                              = 2181,
   $zookeeper_root                              = '/storm',

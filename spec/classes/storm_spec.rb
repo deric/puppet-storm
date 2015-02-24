@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'storm' do
 
   it { should compile.with_all_deps }
+  it { should contain_class('storm')}
   it { should contain_package('storm').with({
       'ensure' => 'present'
       })

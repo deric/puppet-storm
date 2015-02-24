@@ -27,6 +27,7 @@ describe 'storm::ui' do
       :manage_service => true
     }}
 
+    it { should contain_storm__service('ui')}
     it { should contain_service('storm-ui').with({
       :enable     => true,
       :hasstatus  => true,

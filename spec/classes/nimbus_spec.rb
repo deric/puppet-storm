@@ -18,6 +18,7 @@ describe 'storm::nimbus' do
       :manage_service => true
     }}
 
+    it { should contain_storm__service('nimbus')}
     it { should contain_service('storm-nimbus').with({
       :enable     => true,
       :hasstatus  => true,

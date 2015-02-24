@@ -27,6 +27,7 @@ describe 'storm::supervisor' do
       :manage_service => true
     }}
 
+    it { should contain_storm__service('supervisor')}
     it { should contain_service('storm-supervisor').with({
       :enable     => true,
       :hasstatus  => true,

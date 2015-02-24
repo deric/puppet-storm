@@ -34,6 +34,7 @@ describe 'storm::mesos' do
       :manage_service => true
     }}
 
+    it { should contain_storm__service('mesos')}
     it { should contain_service(
       'storm-mesos'
       ).with({
