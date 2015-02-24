@@ -18,3 +18,8 @@ end
 task :spec_prep => :librarian_spec_prep
 
 task :default => [:spec, :lint]
+
+desc 'Lint metadata.json file'
+task :meta do
+  sh 'metadata-json-lint metadata.json'
+end
