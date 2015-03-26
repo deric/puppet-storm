@@ -1,7 +1,7 @@
 # /etc/default/storm-<%= @name %>
 
 #_ START? _#
-ENABLE="<%= @start %>"
+ENABLE="<%= @manage_service %>"
 
 #_ PID FILE _#
 STORM_<%= @name.upcase %>_PID="/var/run/storm-<%= @name %>.pid"
