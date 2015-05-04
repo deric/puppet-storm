@@ -83,9 +83,10 @@ class storm(
   }
 
   concat { $config_file:
-    owner => $user,
-    group => $group,
-    mode  => '0644',
+    owner   => $user,
+    group   => $group,
+    mode    => '0644',
+    require => Class['storm::install'],
   }
 
   concat::fragment { 'core':
