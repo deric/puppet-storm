@@ -4,4 +4,4 @@
 spec/fixtures/modules/*
 spec/fixtures/*
 pkg/*
-
+Gemfile.lock
