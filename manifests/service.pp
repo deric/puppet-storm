@@ -39,7 +39,7 @@ define storm::service(
 
   if $manage_service {
     service { "storm-${name}":
-      ensure     => 'running',
+      ensure     => $enable,
       hasstatus  => true,
       hasrestart => true,
       enable     => $enable,
@@ -50,18 +50,5 @@ define storm::service(
         File["/etc/default/storm-${name}"]
       ],
     }
-  } else {
-    service { "storm-${name}":
-      ensure     => 'stopped',
-      hasstatus  => true,
-      hasrestart => true,
-      enable     => false,
-      provider   => $force_provider,
-      require    => File["/etc/default/storm-${name}"],
-      subscribe  => [ File[$config_file],
-        File['/etc/default/storm'],
-        File["/etc/default/storm-${name}"]
-      ],
-    }
-  }
+  } 
 }
