@@ -52,8 +52,16 @@ define storm::service(
     }
   } else {
     service { "storm-${name}":
-      ensure    => 'stopped',
-      provider   => $force_provider
+      ensure     => 'stopped',
+      hasstatus  => true,
+      hasrestart => true,
+      enable     => $enable,
+      provider   => $force_provider,
+      require    => File["/etc/default/storm-${name}"],
+      subscribe  => [ File[$config_file],
+        File['/etc/default/storm'],
+        File["/etc/default/storm-${name}"]
+      ],
     }
   }
 }
