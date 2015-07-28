@@ -55,7 +55,7 @@ define storm::service(
       ensure     => 'stopped',
       hasstatus  => true,
       hasrestart => true,
-      enable     => $enable,
+      enable     => false,
       provider   => $force_provider,
       require    => File["/etc/default/storm-${name}"],
       subscribe  => [ File[$config_file],
