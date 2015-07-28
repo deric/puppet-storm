@@ -37,6 +37,11 @@ define storm::service(
     require => Class['storm::install'],
   }
 
+  notify { "storm-${name}":
+    message =>   "service ${name} enable ${enable} manage ${manage_service}",
+    withpath => true,
+  }
+
   if $manage_service {
     service { "storm-${name}":
       ensure     => $enable,
