@@ -50,5 +50,10 @@ define storm::service(
         File["/etc/default/storm-${name}"]
       ],
     }
+  } else {
+    service { "storm-${name}":
+      ensure    => 'stopped',
+      provider   => $force_provider
+    }
   }
 }

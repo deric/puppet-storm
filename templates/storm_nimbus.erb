@@ -2,6 +2,7 @@
 #_ NIMBUS _#
 nimbus.host: "<%= @host %>"
 nimbus.thrift.port: <%= @thrift_port %>
+nimbus.thrift.threads: 64
 nimbus.childopts: "<%= @childopts %>"
 nimbus.task.timeout.secs: <%= @task_timeout_secs %>
 nimbus.supervisor.timeout.secs: <%= @supervisor_timeout_secs %>
@@ -11,3 +12,5 @@ nimbus.inbox.jar.expiration.secs: <%= @inbox_jar_expiration_secs %>
 nimbus.task.launch.secs: <%= @task_launch_secs %>
 nimbus.reassign: <%= @reassign %>
 nimbus.file.copy.expiration.secs: <%= @file_copy_expiration_secs %>
+nimbus.topology.validator: "backtype.storm.nimbus.DefaultTopologyValidator"
+nimbus.credential.renewers.freq.secs: 600
