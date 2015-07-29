@@ -28,6 +28,9 @@ class storm(
   $zookeeper_session_timeout                   = 20000,
   $zookeeper_retry_times                       = 5,
   $zookeeper_retry_interval                    = 1000,
+  $transactional_zookeeper_root                = '/stormtransactional',
+  $transactional_zookeeper_servers             = 'null',
+  $transactional_zookeeper_port                = 'null',
   $config_file                                 = '/etc/storm/storm.yaml',
   $dev_zookeeper_path                          = '/tmp/dev-storm-zookeeper',
     #_ WORKERS _#

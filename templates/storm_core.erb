@@ -33,6 +33,11 @@ dev.zookeeper.path: "<%= @dev_zookeeper_path %>"
 storm.zookeeper.retry.intervalceiling.millis: 30000
 
 
+transactional.zookeeper.root: "<%= @transactional_zookeeper_root %>"
+transactional.zookeeper.servers: <%= @transactional_zookeeper_servers %>
+transactional.zookeeper.port: <%= @transactional_zookeeper_port %>
+
+
 #_ WORKER _#
 worker.childopts: "<%= @worker_childopts %>"
 worker.gc.childopts: ""
