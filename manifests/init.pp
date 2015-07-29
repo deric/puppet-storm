@@ -30,7 +30,7 @@ class storm(
   $zookeeper_retry_interval                    = 1000,
   $transactional_zookeeper_root                = '/stormtransactional',
   $transactional_zookeeper_servers             = 'null',
-  $transactional_zookeeper_port                = 'null',
+  $transactional_zookeeper_port                = 2181,
   $config_file                                 = '/etc/storm/storm.yaml',
   $dev_zookeeper_path                          = '/tmp/dev-storm-zookeeper',
     #_ WORKERS _#
