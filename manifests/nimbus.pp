@@ -15,6 +15,7 @@ class storm::nimbus(
   $mem                       = '1024m',
   $host                      = 'localhost',
   $thrift_port               = 6627,
+  $thrift_threads            = 256,
   $childopts                 = '-Xmx1024m',
   $task_timeout_secs         = 30,
   $supervisor_timeout_secs   = 60,

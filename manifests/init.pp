@@ -39,6 +39,17 @@ class storm(
   $task_heartbeat_frequency_secs               = 3,
   $task_refresh_poll_secs                      = 10,
 
+  #_ NETTY _#
+  $netty_server_worker_threads                 = 1,
+  $netty_client_worker_threads                 = 1,
+  $netty_buffer_size                           = 5242880, #5MB buffer
+  $netty_max_retries                           = 300,
+  $netty_max_wait_ms                           = 1000,
+  $netty_min_wait_ms                           = 100,
+  $netty_transfer_batch_size                   = 262144,
+  $netty_socket_backlog                        = 500,
+  $netty_authentication                        = false,
+  $group_mapping_service_cache_duration_secs   = 120,
   #_ 0MQ _#
   $zmq_threads                                 = 1,
   $zmq_linger_millis                           = 5000,
