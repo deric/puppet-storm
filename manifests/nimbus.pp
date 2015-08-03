@@ -25,6 +25,9 @@ class storm::nimbus(
   $task_launch_secs          = 120,
   $reassign                  = true,
   $file_copy_expiration_secs = 600,
+  $retry_times               = 5,
+  $retry_interval_millis     = 2000,
+  $retry_intervalceiling_millis = 60000,
   $jvm                       = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=nimbus.log'],
