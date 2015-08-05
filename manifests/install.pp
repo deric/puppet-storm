@@ -16,6 +16,7 @@ class storm::install(
   $ensure   = '0.9.4',
 ) {
 
-  ensure_resource('package', $packages, {'ensure' => $ensure })
+  package { 'apache-storm': ensure => '0.9.4'}
+  #ensure_resource('package', $packages, {'ensure' => $ensure })
 
 }
