@@ -13,10 +13,10 @@
 #
 class storm::install(
   $packages = ['storm'],
-  $ensure   = '0.9.4',
+  $ensure   = '0.9.4.1',
 ) {
 
-  package { 'storm': ensure => '0.9.4'}
+  package { 'storm': ensure => $ensure}
   #ensure_resource('package', $packages, {'ensure' => $ensure })
 
 }
