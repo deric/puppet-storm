@@ -22,7 +22,6 @@ class storm::supervisor(
   $worker_timeout_secs       = 30,
   $monitor_frequency_secs    = 3,
   $heartbeat_frequency_secs  = 5,
-  $enable                    = true,
   $jvm                       = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=supervisor.log'
