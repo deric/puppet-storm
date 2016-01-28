@@ -1,4 +1,9 @@
 bundler_args: --without development
+sudo: false
+cache:
+  - bundler
+  - directories:
+    - $HOME/librarian-puppet
 script:
   - RAKE_ENV=ci bundle exec rake validate
   - RAKE_ENV=ci bundle exec rake spec
@@ -9,11 +14,15 @@ rvm:
   - 2.0.0
   - 2.1.5
 env:
-  - PUPPET_VERSION="~> 2.7.0"
-  - PUPPET_VERSION="~> 3.4.0"
-  - PUPPET_VERSION="~> 3.5.0"
-  - PUPPET_VERSION="~> 3.6.0"
-  - PUPPET_VERSION="~> 3.7.0"
+  global:
+    - LIBRARIAN_PUPPET_TMP="$HOME/librarian-puppet"
+  matrix:
+    - PUPPET_VERSION="~> 2.7.0"
+    - PUPPET_VERSION="~> 3.4.0"
+    - PUPPET_VERSION="~> 3.5.0"
+    - PUPPET_VERSION="~> 3.6.0"
+    - PUPPET_VERSION="~> 3.7.0"
+    - PUPPET_VERSION="~> 3.8.0"
   #- PUPPET_VERSION="~> 3.7.0" STRICT_VARIABLES=yes FUTURE_PARSER=yes
 matrix:
   exclude:
