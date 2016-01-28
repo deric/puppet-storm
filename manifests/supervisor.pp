@@ -25,7 +25,8 @@ class storm::supervisor(
   $jvm                       = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=supervisor.log'
-  ]
+  ],
+  $config_file               = $storm::config_file,
 ) inherits storm {
 
   validate_bool($enable)

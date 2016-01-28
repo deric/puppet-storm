@@ -23,6 +23,8 @@ class storm::mesos(
   $framework_role       = '*',
   $framework_checkpoint = false,
   $jvm                  = [],
+  $mem                  = '512m',
+  $config_file          = $storm::config_file,
 ) inherits storm {
 
   validate_array($jvm)

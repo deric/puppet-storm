@@ -22,7 +22,8 @@ class storm::ui(
   $jvm            = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=ui.log'
-  ]
+  ],
+  $config_file    = $storm::config_file,
   ) inherits storm {
   validate_bool($manage_service)
   validate_array($jvm)
