@@ -11,7 +11,7 @@
 class storm::nimbus(
   $manage_service            = false,
   $enable                    = true,
-  $ensure                    = 'running',
+  $ensure_service            = 'running',
   $force_provider            = undef,
   $mem                       = '1024m',
   $host                      = 'localhost',
@@ -49,7 +49,7 @@ class storm::nimbus(
     config_file    => $config_file,
     force_provider => $force_provider,
     enable         => $enable,
-    ensure         => $ensure,
+    ensure_service => $ensure_service,
     jvm_memory     => $mem,
     opts           => $jvm,
     require        => Class['storm::config']

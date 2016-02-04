@@ -19,6 +19,7 @@
 #               }
 #
 define storm::service(
+  $ensure_service = 'running',
   $manage_service = false,
   $force_provider = undef,
   $config_file    = '/etc/storm/storm.yaml',
@@ -27,7 +28,6 @@ define storm::service(
   $opts           = [],
   $user           = 'root',
   $owner          = 'root',
-  $ensure         = 'running',
   ) {
 
   file { "/etc/default/storm-${name}":
@@ -45,7 +45,7 @@ define storm::service(
 
   if $manage_service {
     service { "storm-${name}":
-      ensure     => $ensure,
+      ensure     => $ensure_service,
       hasstatus  => true,
       hasrestart => true,
       enable     => $enable,
