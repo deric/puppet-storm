@@ -15,6 +15,7 @@
 class storm::drpc(
   $manage_service                  = false,
   $enable                          = true,
+  $ensure                          = 'running',
   $force_provider                  = undef,
   $mem                             = '1024m',
   $jvm                             = [
@@ -45,6 +46,7 @@ class storm::drpc(
     manage_service => $manage_service,
     force_provider => $force_provider,
     enable         => $enable,
+    ensure         => $ensure,
     config_file    => $config_file,
     jvm_memory     => $mem,
     opts           => $jvm,

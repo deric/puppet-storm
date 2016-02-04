@@ -14,6 +14,7 @@ class storm::supervisor(
   $manage_service            = false,
   $force_provider            = undef,
   $enable                    = true,
+  $ensure                    = 'running',
   $mem                       = '1024m',
   $start_port                = 6700,
   $workers                   = 4,
@@ -43,12 +44,13 @@ class storm::supervisor(
   storm::service { 'supervisor':
     manage_service => $manage_service,
     enable         => $enable,
+    ensure         => $ensure,
     force_provider => $force_provider,
     config_file    => $config_file,
     jvm_memory     => $mem,
     opts           => $jvm,
   }
-  
+
   storm::service { 'logviewer':
     manage_service => true,
     enable         => true,
@@ -56,7 +58,7 @@ class storm::supervisor(
     config_file    => $config_file,
     jvm_memory     => '128m'
   }
-  
-  
+
+
 
 }

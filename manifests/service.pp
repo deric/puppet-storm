@@ -26,7 +26,8 @@ define storm::service(
   $jvm_memory     = '768m',
   $opts           = [],
   $user           = 'root',
-  $owner          = 'root'
+  $owner          = 'root',
+  $ensure         = 'running',
   ) {
 
   file { "/etc/default/storm-${name}":
@@ -38,13 +39,13 @@ define storm::service(
   }
 
   notify { "storm-${name}":
-    message =>   "service ${name} enable ${enable} manage ${manage_service}",
+    message  =>   "service ${name} enable ${enable} manage ${manage_service}",
     withpath => true,
   }
 
   if $manage_service {
     service { "storm-${name}":
-      ensure     => $enable,
+      ensure     => $ensure,
       hasstatus  => true,
       hasrestart => true,
       enable     => $enable,
