@@ -13,7 +13,7 @@
 #
 class storm::install(
   $packages = ['storm'],
-  $ensure   = 'installed',
+  $ensure   = 'latest',
 ) {
 
   ensure_resource('package', $packages, {'ensure' => $ensure })

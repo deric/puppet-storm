@@ -8,6 +8,19 @@ drpc.servers:
     - "<%= drpc %>"
 <% end-%>
 
+drpc.worker.threads: 64
+drpc.max_buffer_size: 1048576
+drpc.queue.size: 128
+drpc.invocations.threads: 64
+drpc.childopts: "-Xmx768m"
+drpc.http.port: 3774
+drpc.https.port: -1
+drpc.https.keystore.password: ""
+drpc.https.keystore.type: "JKS"
+drpc.http.creds.plugin: backtype.storm.security.auth.DefaultHttpCredentialsPlugin
+drpc.authorizer.acl.filename: "drpc-auth-acl.yaml"
+drpc.authorizer.acl.strict: false
+
 transactional.zookeeper.root: "<%= @transactional_zookeeper_root %>"
 transactional.zookeeper.servers: <%= @transactional_zookeeper_servers %>
 transactional.zookeeper.port: <%= @transactional_zookeeper_port %>

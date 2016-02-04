@@ -15,6 +15,7 @@ class storm::nimbus(
   $mem                       = '1024m',
   $host                      = 'localhost',
   $thrift_port               = 6627,
+  $thrift_threads            = 256,
   $childopts                 = '-Xmx1024m',
   $task_timeout_secs         = 30,
   $supervisor_timeout_secs   = 60,
@@ -24,6 +25,9 @@ class storm::nimbus(
   $task_launch_secs          = 120,
   $reassign                  = true,
   $file_copy_expiration_secs = 600,
+  $retry_times               = 5,
+  $retry_interval_millis     = 2000,
+  $retry_intervalceiling_millis = 60000,
   $jvm                       = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=nimbus.log'],
