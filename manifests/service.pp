@@ -44,10 +44,10 @@ define storm::service(
       hasrestart => true,
       enable     => $enable,
       provider   => $force_provider,
-      require    => File["/etc/default/storm-${name}"],
-      subscribe  => [ File[$config_file],
+      require    => Concat::Fragment[$name],
+      subscribe  => [ Concat[$config_file],
         File['/etc/default/storm'],
-        File["/etc/default/storm-${name}"]
+        Concat::Fragment[$name]
       ],
     }
   }
