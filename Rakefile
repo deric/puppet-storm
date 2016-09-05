@@ -9,9 +9,12 @@ require 'puppetlabs_spec_helper/rake_tasks'
 # blacksmith does not support ruby 1.8.7 anymore
 require 'puppet_blacksmith/rake_tasks' if ENV['RAKE_ENV'] != 'ci' && RUBY_VERSION.split('.')[0,3].join.to_i > 187
 
-PuppetLint.configuration.ignore_paths = ["spec/fixtures/modules/apt/manifests/*.pp"]
-PuppetLint.configuration.log_format = '%{path}:%{linenumber}:%{KIND}: %{message}'
-PuppetLint.configuration.send('disable_80chars')
+Rake::Task[:lint].clear
+PuppetLint::RakeTask.new :lint do |config|
+  config.ignore_paths = ["spec/**/*.pp", "vendor/**/*.pp", "pkg/**/*.pp"]
+  config.log_format = '%{path}:%{linenumber}:%{KIND}: %{message}'
+end
+
 task :librarian_spec_prep do
   sh 'librarian-puppet install --path=spec/fixtures/modules/'
 end
