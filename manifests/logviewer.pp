@@ -17,6 +17,7 @@ class storm::logviewer(
   $childopts                       = '-Xmx128m',
   $mem                             = '128m',
   $jvm                             = [],
+  $config_file                     = $storm::config_file
 ) inherits storm {
 
   concat::fragment { 'logviewer':
