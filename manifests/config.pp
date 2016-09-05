@@ -1,10 +1,6 @@
 # Class: storm::config
 #
-# This module manages the storm configuration directories
-#
-# Parameters: None
-#
-# Actions: None
+# This module manages the storm configuration
 #
 # Requires: storm::install, storm
 #
@@ -16,7 +12,7 @@ class storm::config(
   $user              = 'root',
   $group             = 'root',
   $home              = '/usr/lib/storm',
-  $version           = '0.9.3',
+  $version           = '1.0.2',
   $lib               = '/usr/lib/storm/lib',
   $jar_prefix        = 'storm',
   $conf              = '/etc/storm',

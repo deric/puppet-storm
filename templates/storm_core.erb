@@ -13,12 +13,6 @@ storm.principal.tolocal: "backtype.storm.security.auth.DefaultPrincipalToLocal"
 storm.group.mapping.service: "backtype.storm.security.auth.ShellBasedGroupsMapping"
 storm.messaging.transport: "backtype.storm.messaging.netty.Context"
 
-#_ LOGVIEWER _#
-logviewer.port: 8000
-logviewer.childopts: "-Xmx128m"
-logviewer.cleanup.age.mins: 10080
-logviewer.appender.name: "A1"
-
 #_ ZOOKEEPER _#
 storm.zookeeper.servers:
 <% @zookeeper_servers.each do |z| -%>

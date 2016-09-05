@@ -13,7 +13,7 @@ class storm(
   $user                                        = 'root',
   $group                                       = 'root',
   $home                                        = '/usr/lib/storm',
-  $version                                     = '0.9.3',
+  $version                                     = '1.0.2',
   $lib                                         = '/usr/lib/storm/lib',
   # JAR path will be "$lib/$jar_prefix-$version.jar"
   $jar_prefix                                  = 'storm',

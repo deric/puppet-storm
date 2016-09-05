@@ -2,10 +2,6 @@
 #
 # This module manages storm supervisoration
 #
-# Parameters: None
-#
-# Actions: None
-##
 # Sample Usage:
 #
 # class{'storm::supervisor': }
@@ -51,14 +47,6 @@ class storm::supervisor(
     opts           => $jvm,
   }
 
-  storm::service { 'logviewer':
-    manage_service => true,
-    enable         => true,
-    force_provider => $force_provider,
-    config_file    => $config_file,
-    jvm_memory     => '128m'
-  }
-
-
+  class { 'storm::logviewer': }
 
 }

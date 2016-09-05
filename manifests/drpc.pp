@@ -1,10 +1,6 @@
 # Class: storm::drpc
 #
-# This module manages storm drpcation
-#
-# Parameters: None
-#
-# Actions: None
+# This module manages storm drpc
 #
 # Requires: storm:install
 #
