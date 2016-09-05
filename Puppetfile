@@ -1,4 +1,4 @@
 forge 'https://forgeapi.puppetlabs.com'
 
-mod 'puppetlabs/stdlib', '>=0.1.7'
-mod 'puppetlabs/concat', '>=1.0.0'
+mod 'puppetlabs/stdlib', '>=4.2.0'
+mod 'puppetlabs/concat', '>=1.2.4'

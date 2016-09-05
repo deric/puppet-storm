@@ -51,7 +51,7 @@ define storm::service(
       enable     => $enable,
       provider   => $force_provider,
       require    => File["/etc/default/storm-${name}"],
-      subscribe  => [ File[$config_file],
+      subscribe  => [ Concat[$config_file],
         File['/etc/default/storm'],
         File["/etc/default/storm-${name}"]
       ],
