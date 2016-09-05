@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 group :rake do
-  puppetversion = ENV.key?('PUPPET_VERSION') ? "#{ENV['PUPPET_VERSION']}" : ['>= 2.7.0','< 4.0']
+  puppetversion = ENV.key?('PUPPET_VERSION') ? "#{ENV['PUPPET_VERSION']}" : ['>= 3.0.0','< 4.0']
   gem 'puppet', puppetversion
   gem 'puppet-lint'
   gem 'puppetlabs_spec_helper', '>=0.2.0'
@@ -9,9 +9,13 @@ group :rake do
   gem 'rspec-system-puppet',     :require => false
   gem 'serverspec',              :require => false
   gem 'rspec-system-serverspec', :require => false
-  gem 'librarian-puppet' , '< 2.0'
-  gem 'highline', '~> 1.6.21' # 1.7 is not compatible with ruby 1.8.7
-  gem 'rspec-puppet', '~> 2.0'
+  gem 'librarian-puppet' , '>=2.0'
+  gem 'highline'
+  gem 'json', '< 2.0' # newer versions requires at least ruby 2.0
+  gem 'rspec-puppet'
+  # in order to support Ruby 1.9.3
+  gem 'fog-google', '< 0.1.1'
+  gem 'parallel_tests'
 end
 
 group :development do
