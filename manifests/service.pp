@@ -45,10 +45,18 @@ define storm::service(
 
   if $manage_service {
     # workaround for redhat's storm-service rpm 
-    if $facts['os']['family'] == 'redhat' {
-      file { "/etc/init.d/storm-${name}":
-        mode => 'a+x',
+    case $::osfamily {
+      'RedHat': {
+         case $::operatingsystemmajrelease {
+            '6': { 
+               file { "/etc/init.d/storm-${name}":
+                 mode => 'a+x',
+               }
+            }
+            default: {}
+         }
       }
+      default: {}
     }
 
     service { "storm-${name}":
