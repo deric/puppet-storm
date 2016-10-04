@@ -44,6 +44,11 @@ define storm::service(
   }
 
   if $manage_service {
+    # workaround for redhat's storm-service rpm 
+    file { "/etc/init.d/storm-${name}":
+      mode => 'a+x',
+    }
+
     service { "storm-${name}":
       ensure     => $ensure_service,
       hasstatus  => true,
