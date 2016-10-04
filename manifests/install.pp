@@ -14,8 +14,13 @@
 class storm::install(
   $packages = ['storm'],
   $ensure   = 'latest',
+  $conf     = '/etc/storm',
 ) {
 
   ensure_resource('package', $packages, {'ensure' => $ensure })
 
+  file { $conf:
+    ensure => 'directory',
+    mode   => '0750',
+  }
 }
