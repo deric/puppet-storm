@@ -44,17 +44,17 @@ define storm::service(
   }
 
   if $manage_service {
-    # workaround for redhat's storm-service rpm 
+    # workaround for redhat's storm-service rpm
     case $::osfamily {
       'RedHat': {
-         case $::operatingsystemmajrelease {
-            '6': { 
-               file { "/etc/init.d/storm-${name}":
-                 mode => 'a+x',
-               }
+        case $::operatingsystemmajrelease {
+          '6': {
+            file { "/etc/init.d/storm-${name}":
+              mode => 'a+x',
             }
-            default: {}
-         }
+          }
+          default: {}
+        }
       }
       default: {}
     }
