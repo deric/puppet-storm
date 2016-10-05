@@ -12,6 +12,8 @@
 #
 #
 class storm::install(
+  $user     = 'root',
+  $group    = 'root',
   $packages = ['storm'],
   $ensure   = 'latest',
   $conf     = '/etc/storm',
@@ -21,6 +23,8 @@ class storm::install(
 
   file { $conf:
     ensure => 'directory',
+    owner  => $user,
+    group  => $group,
     mode   => '0750',
   }
 }
