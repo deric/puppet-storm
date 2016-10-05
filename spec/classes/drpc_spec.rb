@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe 'storm::drpc' do
 
+  let(:facts) {{
+    :operatingsystem => 'Debian',
+    :osfamily => 'Debian',
+    :lsbdistcodename => 'jessie',
+    :majdistrelease => '8',
+    :operatingsystemmajrelease => 'jessie',
+  }}
+
   it { should compile.with_all_deps }
   it { should contain_class('storm::drpc') }
   it { should contain_package('storm') }
