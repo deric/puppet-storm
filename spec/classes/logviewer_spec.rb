@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe 'storm::logviewer' do
 
+  let(:facts) {{
+    :operatingsystem => 'Debian',
+    :osfamily => 'Debian',
+    :lsbdistcodename => 'jessie',
+    :majdistrelease => '8',
+    :operatingsystemmajrelease => 'jessie',
+  }}
+
   it { is_expected.to compile.with_all_deps }
   it { is_expected.to contain_class('storm::logviewer') }
   it { is_expected.to contain_package('storm') }

@@ -12,10 +12,19 @@
 #
 #
 class storm::install(
+  $user     = 'root',
+  $group    = 'root',
   $packages = ['storm'],
   $ensure   = 'latest',
+  $conf     = '/etc/storm',
 ) {
 
   ensure_resource('package', $packages, {'ensure' => $ensure })
 
+  file { $conf:
+    ensure => 'directory',
+    owner  => $user,
+    group  => $group,
+    mode   => '0750',
+  }
 }

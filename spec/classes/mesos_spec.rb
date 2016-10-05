@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe 'storm::mesos' do
 
+  let(:facts) {{
+    :operatingsystem => 'Debian',
+    :osfamily => 'Debian',
+    :lsbdistcodename => 'jessie',
+    :majdistrelease => '8',
+    :operatingsystemmajrelease => 'jessie',
+  }}
+
   let(:params) {{
     :master_url => 'zk://localhost:2181',
   }}

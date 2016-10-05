@@ -79,6 +79,9 @@ class storm(
   validate_array($topology_kryo_register)
 
   class {'storm::install':
+    user     => $user,
+    group    => $group,
+    conf     => $conf,
     ensure   => $packages_ensure,
     packages => $packages,
   }
