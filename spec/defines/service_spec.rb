@@ -21,6 +21,7 @@ describe 'storm::service' do
       :enable     => true,
       :hasstatus  => true,
       :hasrestart => true
-    )}
+    )
+    }
   end
 end
