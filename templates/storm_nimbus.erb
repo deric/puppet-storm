@@ -3,7 +3,7 @@
 nimbus.host: "<%= @host %>"
 nimbus.thrift.port: <%= @thrift_port %>
 nimbus.thrift.threads: <%= @thrift_threads %>
-nimbus.thrift.max_buffer_size: <%= thrift_max_buffer_size %>
+nimbus.thrift.max_buffer_size: <%= @thrift_max_buffer_size %>
 nimbus.childopts: "<%= @childopts %>"
 nimbus.task.timeout.secs: <%= @task_timeout_secs %>
 nimbus.supervisor.timeout.secs: <%= @supervisor_timeout_secs %>
@@ -13,8 +13,8 @@ nimbus.inbox.jar.expiration.secs: <%= @inbox_jar_expiration_secs %>
 nimbus.task.launch.secs: <%= @task_launch_secs %>
 nimbus.reassign: <%= @reassign %>
 nimbus.file.copy.expiration.secs: <%= @file_copy_expiration_secs %>
-nimbus.topology.validator: "backtype.storm.nimbus.DefaultTopologyValidator"
-nimbus.credential.renewers.freq.secs: 600
+nimbus.topology.validator: "<%= @topology_validator %>"
+nimbus.credential.renewers.freq.secs: <%= @credential_renewers_freq_secs %>
 storm.nimbus.retry.times: <%= @retry_times %>
 storm.nimbus.retry.interval.millis: <%= @retry_interval_millis %>
 storm.nimbus.retry.intervalceiling.millis: <%= @retry_intervalceiling_millis %>
