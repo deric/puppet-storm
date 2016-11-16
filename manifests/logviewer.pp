@@ -9,6 +9,8 @@
 #  class{'storm::logviewer': }
 #
 class storm::logviewer(
+  $appender_name                   = 'A1',
+  $cleanup_age_mins                = 10080,
   $manage_service                  = false,
   $enable                          = true,
   $ensure_service                  = 'running',

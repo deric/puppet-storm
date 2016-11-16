@@ -13,18 +13,24 @@
 #  class {'storm::ui': }
 #
 class storm::ui(
-  $manage_service = false,
-  $enable         = true,
-  $force_provider = undef,
-  $mem            = '1024m',
-  $port           = '8080',
-  $host           = '0.0.0.0',
-  $childopts      = '-Xmx768m',
-  $jvm            = [
+  $actions_enabled     = true,
+  $manage_service      = false,
+  $enable              = true,
+  $filter              = 'null',
+  $filter_params       = 'null',
+  $force_provider      = undef,
+  $header_buffer_bytes = '4096',
+  $http_creds_plugin   = 'backtype.storm.security.auth.DefaultHttpCredentialsPlugin',
+  $mem                 = '1024m',
+  $port                = '8080',
+  $host                = '0.0.0.0',
+  $childopts           = '-Xmx768m',
+  $jvm                 = [
     '-Dlog4j.configuration=file:/etc/storm/storm.log.properties',
     '-Dlogfile.name=ui.log'
   ],
-  $config_file    = $storm::config_file,
+  $config_file         = $storm::config_file,
+  $users               = 'null',
   ) inherits storm {
   validate_bool($manage_service)
   validate_array($jvm)
