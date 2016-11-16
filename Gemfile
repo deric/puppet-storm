@@ -17,7 +17,6 @@ group :rake do
     gem 'fog-google', '< 0.1.1'
   end
   gem 'rspec-puppet'
-  gem 'parallel_tests'
 end
 
 group :development do
