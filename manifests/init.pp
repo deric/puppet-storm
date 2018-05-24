@@ -68,6 +68,7 @@ class storm(
   $topology_stats_sample_rate                  = '0.05',
   $topology_fall_back_on_java_serialization    = true,
   $topology_worker_childopts                   = 'null',
+  $topology_sleep_spout_wait_strategy_time_ms  = 1,
   $packages                                    = ['storm'],
   $packages_ensure                             = 'present',
 ) {
@@ -81,7 +82,6 @@ class storm(
   class {'storm::install':
     user     => $user,
     group    => $group,
-    conf     => $conf,
     ensure   => $packages_ensure,
     packages => $packages,
   }

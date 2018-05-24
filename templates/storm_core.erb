@@ -84,7 +84,7 @@ topology.tick.tuple.freq.secs: null
 topology.worker.shared.thread.pool.size: 4
 topology.disruptor.wait.strategy: "com.lmax.disruptor.BlockingWaitStrategy"
 topology.spout.wait.strategy: "backtype.storm.spout.SleepSpoutWaitStrategy"
-topology.sleep.spout.wait.strategy.time.ms: 1
+topology.sleep.spout.wait.strategy.time.ms: <%= @topology_sleep_spout_wait_strategy_time_ms %>
 topology.error.throttle.interval.secs: 10
 topology.max.error.report.per.interval: 5
 topology.kryo.factory: "backtype.storm.serialization.DefaultKryoFactory"
@@ -95,7 +95,7 @@ topology.classpath: null
 topology.environment: null
 topology.bolts.outgoing.overflow.buffer.enable: false
 topology.disruptor.wait.timeout.millis: 1000
-topology.metrics.consumer.register:
-  - class: "backtype.storm.metric.LoggingMetricsConsumer"
-    parallelism.hint: 1
+#topology.metrics.consumer.register:
+#  - class: "backtype.storm.metric.LoggingMetricsConsumer"
+#    parallelism.hint: 1
 
