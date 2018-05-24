@@ -82,7 +82,6 @@ class storm(
   class {'storm::install':
     user     => $user,
     group    => $group,
-    conf     => $conf,
     ensure   => $packages_ensure,
     packages => $packages,
   }
